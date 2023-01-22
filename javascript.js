@@ -43,6 +43,7 @@ function color(){
     const hover = document.querySelectorAll('.grid');
     const black = document.querySelector('.black');
     const RGB = document.querySelector('.rainbow');
+    const erase = document.querySelector('.erase');
 
 
     hover.forEach((cell) => {
@@ -50,6 +51,7 @@ function color(){
             black.addEventListener('click',blackColor);
             RGB.addEventListener('click',randomColor);
             cell.classList.add('hover-black');
+            erase.addEventListener('click',eraser);
         });
     });
 }
@@ -87,6 +89,19 @@ function rgbGenerate(){
 
     let color = 'rgb(' + x + ',' + y + ',' + z + ')';
     return color;
+}
+
+function eraser(){
+
+    const hover = document.querySelectorAll('.grid');
+
+    hover.forEach((cell) => {
+        cell.addEventListener('mouseover', () => {
+            cell.style.removeProperty('background-color');
+            cell.classList.remove('hover-black'); 
+        });
+    });
+
 }
 
 function resetGrid(){
